@@ -9,15 +9,29 @@ body {
 .nav {
     border: 1px solid black;
     display: flex;
+    padding-top: 10px;
+}
+
+.logo {
+    font-family: 'Sigmar One', cursive;
+    font-size: 1.6rem;
+    padding: 0 10px;
 }
 
 .nav-items {
-    border: 1px solid black;
-    display: flex;
+    display: flex; 
 }
 
 .link {
-    padding-right: 10px;
+    border: 1px solid black;
+    font-family: 'Righteous', cursive;
+    font-size: 1.2rem;
+    align-self: flex-end;
+}
+
+.link a {
+    text-decoration: none; 
+    padding: 0 10px;
 }
 
 .nav-right {
@@ -30,6 +44,9 @@ body {
 
 @media only screen and (max-width: 768px) {
     /* navbar */
+    .nav {
+        padding-top: 4px;
+    }
     .nav-items,
     .nav {
         flex-direction: column;
@@ -41,6 +58,8 @@ body {
         margin-left: 0;
     }
     .toggle {
+        font-size: 1.4rem;
+        padding-right: 4px;
         align-self: flex-end;
         display: initial;
         position: absolute;
@@ -50,3 +69,13 @@ body {
         display: flex;
     }
 }
+
+
+/* ----
+font-family: 'Sigmar One', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Uncial Antiqua', cursive;
+font-family: 'Libre Baskerville', serif;
+font-family: 'Righteous', cursive;
+font-family: 'Signika', sans-serif;
+---- */
