@@ -22,9 +22,12 @@ app.get("/", (req, res) => {
 app.get("/find", (req, res) => {
     axios.get("https://www.bbc.com/news/technology").then(response => {
         const $ = cheerio.load(response.data);
-        $("div .gs-c-promo").each((i, element) => {
-            if (i >= 1) {
+        $("div.gs-c-promo").each((i, element) => {
+            if (i >= 1 && i < 8) {
                 console.log($(element).find(".gs-c-promo-heading__title").text());
+                console.log($(element).find(".gs-c-promo-summary").text());
+                console.log("https://www.bbc.com/news/" + $(element).find("a.gs-c-promo-heading").attr("href"));
+                console.log("");
             }
         })
     })
