@@ -68,6 +68,10 @@ body {
     .toggle-show {
         display: flex;
     }
+    .link {
+        width: 100%;
+        text-align: right; 
+    }
 }
 
 
