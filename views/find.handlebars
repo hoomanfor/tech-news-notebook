@@ -1,0 +1,9 @@
+{{> nav}}
+    {{#each data}}
+    <div id="scraped-article-{{this.id}}">
+        <p id="headline-{{this.id}}">{{this.headline}}</p>
+        <p id="summary-{{this.id}}">{{this.summary}}</p>
+        <p><a href="{{this.url}}" id="url-{{this.id}}">{{this.url}}</a></p>
+        <button id="save" button-id="{{this.id}}">Save</button>
+    </div>
+    {{/each}}

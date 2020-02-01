@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
+const db = require("./models");
 const PORT = process.env.PORT || 3000
 
 app.use(express.urlencoded({ extended: true }));
@@ -22,14 +23,23 @@ app.get("/", (req, res) => {
 app.get("/find", (req, res) => {
     axios.get("https://www.bbc.com/news/technology").then(response => {
         const $ = cheerio.load(response.data);
+        const scrapedData = [];
         $("div.gs-c-promo").each((i, element) => {
             if (i >= 1 && i < 8) {
-                console.log($(element).find(".gs-c-promo-heading__title").text());
-                console.log($(element).find(".gs-c-promo-summary").text());
-                console.log("https://www.bbc.com/news/" + $(element).find("a.gs-c-promo-heading").attr("href"));
-                console.log("");
+                const scrapedArticle = {};
+                scrapedArticle.id = i;
+                scrapedArticle.headline = $(element).find(".gs-c-promo-heading__title").text().trim();
+                scrapedArticle.summary = $(element).find(".gs-c-promo-summary").text().trim();
+                if ($(element).find("a.gs-c-promo-heading").attr("href").trim()[0] !== "h") {
+                    scrapedArticle.url = "https://www.bbc.com/news" + $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                } else {
+                    scrapedArticle.url = $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                }
+                scrapedData.push(scrapedArticle);
             }
         })
+        console.log("scrapedData", scrapedData);
+    res.render("find", {data: scrapedData});
     })
 });
 
