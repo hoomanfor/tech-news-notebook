@@ -5,8 +5,48 @@
 body {
     font-size: 16px;
 }
+/* navbar */
+.nav {
+    border: 1px solid black;
+    display: flex;
+}
 
-h1 {
-    font-size: 2rem;
-    color: blue;
+.nav-items {
+    border: 1px solid black;
+    display: flex;
+}
+
+.link {
+    padding-right: 10px;
+}
+
+.nav-right {
+    margin-left: auto;
+}
+
+.toggle {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* navbar */
+    .nav-items,
+    .nav {
+        flex-direction: column;
+    }
+    .nav-items {
+        display: none;
+    }
+    .nav-right {
+        margin-left: 0;
+    }
+    .toggle {
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+    }
+    .toggle-show {
+        display: flex;
+    }
 }
