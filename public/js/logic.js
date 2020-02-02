@@ -29,6 +29,9 @@ $(document).on("click", "#view-notes", function (event) {
     if (status === "View Notes") {
         $("#notes-" + id).removeClass("hide")
         $(this).text("Hide Notes")
+        $.getJSON("/articles/" + id, response => {
+            console.log("getJSON", response);
+        })
     } else {
         $("#notes-" + id).addClass("hide")
         $(this).text("View Notes")

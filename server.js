@@ -29,7 +29,7 @@ app.get("/library", (req, res) => {
         .catch((error) => {
             res.json(error);
         })
-})
+});
 
 app.get("/find", (req, res) => {
     axios.get("https://www.bbc.com/news/technology").then(response => {
@@ -62,22 +62,31 @@ app.post("/articles", (req, res) => {
         .catch((error) => {
             console.log(error);
         })
-})
+});
+
+app.get("/articles/:id", (req, res) => {
+    db.Article.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(dbArticle => {
+            res.json(dbArticle);
+        })
+        .catch(error => {
+            res.json(error);
+        })
+});
 
 app.post("/articles/:id", (req, res) => {
-    console.log(req.params.id)
-    console.log(req.body.content)
     db.Note.create(req.body)
         .then(dbNote => {
             return db.Article.findOneAndUpdate({_id: req.params.id}, {$push: {note: dbNote._id}}, {new: true})
         })
         .then(dbArticle => {
-            res.json(dbArticle);
+            res.json("Note Added!");
         })
-        .catch(err => {
-            res.json(err);
+        .catch(error => {
+            res.json(error);
         });
-})
+});
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
