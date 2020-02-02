@@ -64,6 +64,21 @@ app.post("/articles", (req, res) => {
         })
 })
 
+app.post("/articles/:id", (req, res) => {
+    console.log(req.params.id)
+    console.log(req.body.content)
+    db.Note.create(req.body)
+        .then(dbNote => {
+            return db.Article.findOneAndUpdate({_id: req.params.id}, {$push: {note: dbNote._id}}, {new: true})
+        })
+        .then(dbArticle => {
+            res.json(dbArticle);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+})
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });

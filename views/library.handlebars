@@ -4,6 +4,13 @@
         <p id="headline-{{this._id}}">{{this.headline}}</p>
         <p id="summary-{{this._id}}">{{this.summary}}</p>
         <p><a href="{{this.url}}" id="url-{{this._id}}">{{this.url}}</a></p>
-        <button id="add-note" button-id="{{this._id}}">Add Note</button>
+        <button id="view-notes" button-id="{{this._id}}">View Notes</button>
+        <div id="notes-{{this._id}}" class="hide">
+            <form>
+                <input id="input-{{this._id}}" type="text">
+                <br>
+                <button button-id="{{this._id}}" type="submit">Add Note</button>
+            </form>
+        </div>
     </div>
     {{/each}}

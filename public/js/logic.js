@@ -13,13 +13,40 @@ $(document).on("click", "#save", function (event) {
         summary: $("#summary-" + id).text(),
         url: $("#url-" + id).text()
     }
-    console.log(article);
     $.ajax({
         method: "POST",
         url: "/articles",
         data: article
-    }).then(data => {
-        console.log(data)
+    }).then(response => {
+        console.log(response)
     })
     $(this).parent().remove();
+});
+
+$(document).on("click", "#view-notes", function (event) {
+    const status = $(this).text();
+    const id = $(this).attr("button-id");
+    if (status === "View Notes") {
+        $("#notes-" + id).removeClass("hide")
+        $(this).text("Hide Notes")
+    } else {
+        $("#notes-" + id).addClass("hide")
+        $(this).text("View Notes")
+    }
+});
+
+$(document).on("click", "button[type='submit']", function (event) {
+    event.preventDefault();
+    const id = $(this).attr("button-id");
+    const content = $("#input-" + id).val().trim();
+    console.log("prior to post", content);
+    $.ajax({
+        method: "POST",
+        url: "/articles/" + id,
+        data: {
+            "content": content
+        }
+    }).then(response => {
+        console.log(response)
+    })    
 })
