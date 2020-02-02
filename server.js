@@ -20,6 +20,17 @@ app.get("/", (req, res) => {
     res.render('index');
 });
 
+app.get("/library", (req, res) => {
+    db.Article.find({}).lean()
+        .then((found) => {
+            res.render("library", {data: found});
+            // res.json(found);
+        })
+        .catch((error) => {
+            res.json(error);
+        })
+})
+
 app.get("/find", (req, res) => {
     axios.get("https://www.bbc.com/news/technology").then(response => {
         const $ = cheerio.load(response.data);
