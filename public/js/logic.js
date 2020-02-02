@@ -14,4 +14,12 @@ $(document).on("click", "#save", function (event) {
         url: $("#url-" + id).text()
     }
     console.log(article);
+    $.ajax({
+        method: "POST",
+        url: "/articles",
+        data: article
+    }).then(data => {
+        console.log(data)
+    })
+    $(this).parent().remove();
 })

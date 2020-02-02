@@ -43,6 +43,16 @@ app.get("/find", (req, res) => {
     })
 });
 
+app.post("/articles", (req, res) => {
+    db.Article.create(req.body)
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+})
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });

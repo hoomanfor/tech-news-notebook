@@ -1,4 +1,4 @@
 module.exports = {
-    Scrape: require("./Scrape")
+    Article: require("./Article")
 };
   
