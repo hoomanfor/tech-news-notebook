@@ -1,16 +1,21 @@
 {{> nav}}
-    {{#each data}}
-    <div id="saved-article-{{this._id}}">
-        <p id="headline-{{this._id}}">{{this.headline}}</p>
-        <p id="summary-{{this._id}}">{{this.summary}}</p>
-        <p><a href="{{this.url}}" id="url-{{this._id}}">{{this.url}}</a></p>
-        <button id="view-notes" button-id="{{this._id}}">View Notes</button>
-        <div id="notes-{{this._id}}" class="hide">
-            <form>
-                <input id="input-{{this._id}}" type="text">
-                <br>
-                <button button-id="{{this._id}}" type="submit">Add Note</button>
-            </form>
+    <div class="flex-container">
+        {{#each data}}
+        <div class="card" id="saved-article-{{this._id}}">
+            <div class="headline-container">
+                <a class="headline" href="{{this.url}}" id="url-{{this._id}}">{{this.headline}}</a>
+                <button id="view-notes" button-id="{{this._id}}">View Notes</button>
+            </div>
+            <p class="summary" id="summary-{{this._id}}">{{this.summary}}</p>
+                <div id="notes-{{this._id}}" class="notes-container hide" style="border: 1px solid green;">
+                    <div class="notepad">
+                    </div>
+                    <form>
+                        <input class="note-input" id="input-{{this._id}}" type="text">
+                        <button class="note-submit" button-id="{{this._id}}" type="submit">Add Note</button>
+                    </form>
+                </div>
+            </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}

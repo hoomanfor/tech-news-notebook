@@ -42,7 +42,7 @@ app.get("/find", (req, res) => {
                 scrapedArticle.headline = $(element).find(".gs-c-promo-heading__title").text().trim();
                 scrapedArticle.summary = $(element).find(".gs-c-promo-summary").text().trim();
                 if ($(element).find("a.gs-c-promo-heading").attr("href").trim()[0] !== "h") {
-                    scrapedArticle.url = "https://www.bbc.com/news" + $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                    scrapedArticle.url = "https://www.bbc.com" + $(element).find("a.gs-c-promo-heading").attr("href").trim();
                 } else {
                     scrapedArticle.url = $(element).find("a.gs-c-promo-heading").attr("href").trim();
                 }

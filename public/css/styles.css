@@ -10,6 +10,7 @@ body {
     border: 1px solid black;
     display: flex;
     padding-top: 10px;
+    margin-bottom: 10px; 
 }
 
 .logo {
@@ -42,8 +43,56 @@ body {
     display: none;
 }
 /* library */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .hide {
     display: none;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin: 10px auto; 
+}
+
+.headline-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; 
+}
+
+.headline {
+    font-size: 1.6rem;
+    font-family: 'Libre Baskerville', serif;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.summary {
+    font-family: 'Libre Baskerville', serif;
+    color: rgba(0,0,0,.7);
+    padding: 10px; 
+}
+
+.notes-container {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.notepad {
+    background-color: yellow; 
+    height: 300px;
+    width: 300px;
+    justify-content: flex-end; 
+}
+
+form {
+    align-self: flex-end;
+    width: 300px; 
 }
 
 @media only screen and (max-width: 768px) {
