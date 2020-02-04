@@ -7,7 +7,11 @@ const Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 const NoteSchema = new Schema({
   // `content` is of type String
-  content: String
+  content: String,
+  created: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 // This creates our model from the above schema, using mongoose's model method

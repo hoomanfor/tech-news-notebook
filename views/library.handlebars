@@ -7,9 +7,8 @@
                 <button id="view-notes" button-id="{{this._id}}">View Notes</button>
             </div>
             <p class="summary" id="summary-{{this._id}}">{{this.summary}}</p>
-                <div id="notes-{{this._id}}" class="notes-container hide" style="border: 1px solid green;">
-                    <div class="notepad">
-                    </div>
+                <div id="notes-{{this._id}}" class="notes-container hide">
+                    <ul class="notes"></ul>
                     <form>
                         <input class="note-input" id="input-{{this._id}}" type="text">
                         <button class="note-submit" button-id="{{this._id}}" type="submit">Add Note</button>

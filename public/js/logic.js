@@ -4,6 +4,18 @@ function classToggle() {
     navs.forEach(nav => nav.classList.toggle('toggle-show'));
 }
 
+function getNotes(id) {
+    $.getJSON("/articles/" + id, response => {
+        console.log("getJSON", response.note);
+        $(".notes").html("");
+        response.note.forEach(function(element) {
+            const li = $("<li>");
+            li.html(element.content + "<span class='moment'>" + moment(element.created).format("h:mmA MM/DD/YYYY") + "</span>");
+            $(".notes").append(li)
+        })
+    })
+}
+
 document.querySelector('.toggle').addEventListener('click', classToggle);
 
 $(document).on("click", "#save", function (event) {
@@ -29,9 +41,7 @@ $(document).on("click", "#view-notes", function (event) {
     if (status === "View Notes") {
         $("#notes-" + id).removeClass("hide")
         $(this).text("Hide Notes")
-        $.getJSON("/articles/" + id, response => {
-            console.log("getJSON", response);
-        })
+        getNotes(id);
     } else {
         $("#notes-" + id).addClass("hide")
         $(this).text("View Notes")
@@ -51,5 +61,9 @@ $(document).on("click", "button[type='submit']", function (event) {
         }
     }).then(response => {
         console.log(response)
-    })    
+        getNotes(id);
+    })
+    $("#input-" + id).val("");
 })
+
+console.log("Moment Works!", moment("2020-02-04T21:57:00.624Z").format("h:mmA MM/DD/YYYY"))
