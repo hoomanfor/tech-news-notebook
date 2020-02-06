@@ -7,11 +7,11 @@ function classToggle() {
 function getNotes(id) {
     $.getJSON("/articles/" + id, response => {
         console.log("getJSON", response.note);
-        $(".notes").html("");
+        $("#view-notes-" + id).html("");
         response.note.forEach(function(element) {
             const li = $("<li>");
             li.html(element.content + "<span class='moment'>" + moment(element.created).format("h:mmA MM/DD/YYYY") + "</span>");
-            $(".notes").append(li)
+            $("#view-notes-" + id).append(li)
         })
     })
 }
