@@ -48,6 +48,18 @@ $(document).on("click", "#view-notes", function (event) {
     }
 });
 
+$(document).on("click", "#delete-article", function (event) {
+    const id = $(this).attr("button-id");
+    console.log("This works", id);
+    $.ajax({
+        method: "DELETE",
+        url: "/articles/" + id
+    }).then(response => {
+        console.log(response)
+        location.reload("/library");
+    })
+});
+
 $(document).on("click", "button[type='submit']", function (event) {
     event.preventDefault();
     const id = $(this).attr("button-id");
@@ -65,5 +77,3 @@ $(document).on("click", "button[type='submit']", function (event) {
     })
     $("#input-" + id).val("");
 })
-
-console.log("Moment Works!", moment("2020-02-04T21:57:00.624Z").format("h:mmA MM/DD/YYYY"))

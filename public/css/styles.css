@@ -118,14 +118,15 @@ form input {
     font-family: 'Signika', sans-serif;
     font-size: 1.2rem;
     flex-grow: 1;
-    text-align: right;
+    text-align: left;
     outline: 1px solid rgb(0, 0, 0, .2);
     outline-offset: -1px;
     border: none; 
 }
 
 form button,
-#view-notes {
+#view-notes,
+#delete-article {
     -webkit-appearance: none;
     -moz-appearance: none;
     background-color: rgba(32, 47, 255, .8);
@@ -148,6 +149,15 @@ form button:active,
 #view-notes:hover,
 #view-notes:active {
     background-color: rgba(32, 47, 255, 1);
+}
+
+#delete-article {
+    background-color: rgba(255, 67, 64, .8);
+}
+
+#delete-article:active,
+#delete-article:hover {
+    background-color: rgb(255, 67, 64);
 }
 
 .moment {

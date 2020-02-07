@@ -4,7 +4,10 @@
         <div class="card" id="saved-article-{{this._id}}">
             <div class="headline-container">
                 <a class="headline" href="{{this.url}}" id="url-{{this._id}}">{{this.headline}}</a>
-                <button id="view-notes" button-id="{{this._id}}">View Notes</button>
+                <div>
+                    <button id="delete-article" button-id="{{this._id}}">Delete Article</button>
+                    <button id="view-notes" button-id="{{this._id}}">View Notes</button>
+                </div>
             </div>
             <p class="summary" id="summary-{{this._id}}">{{this.summary}}</p>
                 <div id="notes-{{this._id}}" class="notes-container hide">

@@ -42,10 +42,15 @@ app.get("/find", (req, res) => {
                 scrapedArticle.id = i;
                 scrapedArticle.headline = $(element).find(".gs-c-promo-heading__title").text().trim();
                 scrapedArticle.summary = $(element).find(".gs-c-promo-summary").text().trim();
-                if ($(element).find("a.gs-c-promo-heading").attr("href").trim()[0] !== "h") {
-                    scrapedArticle.url = "https://www.bbc.com" + $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                scrapedArticle.url = $(element).find("a.gs-c-promo-heading").attr("href");
+                if (scrapedArticle.url) {
+                    if ($(element).find("a.gs-c-promo-heading").attr("href").trim()[0] !== "h") {
+                        scrapedArticle.url = "https://www.bbc.com" + $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                    } else {
+                        scrapedArticle.url = $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                    }
                 } else {
-                    scrapedArticle.url = $(element).find("a.gs-c-promo-heading").attr("href").trim();
+                    scrapedArticle.url = "#";
                 }
                 scrapedData.push(scrapedArticle);
             }
@@ -88,6 +93,16 @@ app.post("/articles/:id", (req, res) => {
             res.json(error);
         });
 });
+
+app.delete("/articles/:id", (req, res) => {
+    db.Article.deleteOne({ _id: req.params.id })
+        .then(result => {
+            res.json("Article Deleted!")
+        })
+        .catch(error => {
+            res.json(error);
+        })
+})
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
