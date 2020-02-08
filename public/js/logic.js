@@ -20,9 +20,9 @@ document.querySelector('.toggle').addEventListener('click', classToggle);
 $(document).on("click", "#save", function (event) {
     const id = $(this).attr("button-id");
     const article = {
-        headline: $("#headline-" + id).text(),
+        headline: $("#url-" + id).text(),
         summary: $("#summary-" + id).text(),
-        url: $("#url-" + id).text()
+        url: $("#url-" + id).attr("href")
     }
     $.ajax({
         method: "POST",
@@ -31,7 +31,7 @@ $(document).on("click", "#save", function (event) {
     }).then(response => {
         console.log(response)
     })
-    $(this).parent().remove();
+    $("#scraped-article-" + id).remove();
 });
 
 $(document).on("click", "#view-notes", function (event) {

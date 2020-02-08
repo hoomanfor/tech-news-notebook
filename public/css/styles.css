@@ -11,15 +11,15 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex;
     padding-top: 15px;
-    margin-bottom: 10px; 
 }
 
-.logo {
+.logo a{
     font-family: 'Sigmar One', cursive;
     color: white;
     text-shadow: 1px 2px #494E80;
     font-size: 2rem;
     padding: 0 10px 1px 15px;
+    text-decoration: none; 
 }
 
 .nav-items {
@@ -75,7 +75,7 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-    margin: 10px auto; 
+    margin: 10px auto 0 auto;
 }
 
 .headline-container {
@@ -185,10 +185,43 @@ form button:active,
     padding: 0 0 0 5px;
 }
 
+/* hero */
+.flex-hero {
+    background-image: url('../images/bg-large.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+}
+
+.hero-content {
+    width: 500px; 
+    height: 500px; 
+    margin: 40px auto;
+}
+
+h1 {
+    background-image: linear-gradient(to bottom right, rgba(145, 156, 255,.6), rgba(222, 225, 255,.6) );
+    border-radius: 5px; 
+    padding: 10px; 
+    font-family: 'Sigmar One', cursive;
+    font-size: 3rem;
+    text-align: center; 
+    text-shadow: 1px 2px #494E80;
+    color: white;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-family: 'Uncial Antiqua', cursive;
+    text-align: center;
+    color: rgba(0, 0, 0, .8);
+    padding: 5px; 
+}
+
 @media only screen and (max-width: 1024px) {
-    .nav {
-        margin-bottom: 5px;
-    }
     .card {
         width: 100%;
         margin: 5px auto;
