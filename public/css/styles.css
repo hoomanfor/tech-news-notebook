@@ -126,7 +126,8 @@ form input {
 
 form button,
 #view-notes,
-#delete-article {
+#delete-article,
+#save {
     -webkit-appearance: none;
     -moz-appearance: none;
     background-color: rgba(32, 47, 255, .8);
@@ -147,23 +148,65 @@ form button {
 form button:hover,
 form button:active,
 #view-notes:hover,
-#view-notes:active {
+#view-notes:active, 
+#save:hover,
+#save:active {
     background-color: rgba(32, 47, 255, 1);
 }
 
-#delete-article {
+.fa-trash-alt {
+    background-color: rgba(255, 67, 64, .8);
+    cursor: pointer; 
+    color: white;
+    padding: 3px 4px 4px 3px;
+    border-radius:4px;
+    margin-left: 4px; 
+}
+
+#delete-article,
+.fa-trash-alt {
     background-color: rgba(255, 67, 64, .8);
 }
 
 #delete-article:active,
-#delete-article:hover {
+#delete-article:hover,
+.fa-trash-alt:active,
+.fa-trash-alt:hover {
     background-color: rgb(255, 67, 64);
+}
+
+#save {
+    width: 105px;
 }
 
 .moment {
     color: rgba(0,0,0,.5);
     font-size: 1rem;
     padding: 0 0 0 5px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .nav {
+        margin-bottom: 5px;
+    }
+    .card {
+        width: 100%;
+        margin: 5px auto;
+    }
+    .headline {
+        align-self: center;
+    }
+    .button-container {
+        display: flex;
+        flex-direction: column;
+    }
+    #view-notes {
+        margin-top: 5px;
+        width: 105px;
+    }
+    #delete-article {
+        width: 105px;
+    }
 }
 
 @media only screen and (max-width: 768px) {

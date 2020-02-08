@@ -1,9 +1,18 @@
 {{> nav}}
-    {{#each data}}
-    <div id="scraped-article-{{this.id}}">
-        <p id="headline-{{this.id}}">{{this.headline}}</p>
-        <p id="summary-{{this.id}}">{{this.summary}}</p>
-        <p><a href="{{this.url}}" id="url-{{this.id}}">{{this.url}}</a></p>
-        <button id="save" button-id="{{this.id}}">Save</button>
+    <div class="flex-container">
+        {{#each data}}
+        {{!-- <div id="scraped-article-{{this.id}}">
+            <p id="headline-{{this.id}}">{{this.headline}}</p>
+            <p id="summary-{{this.id}}">{{this.summary}}</p>
+            <p><a href="{{this.url}}" id="url-{{this.id}}">{{this.url}}</a></p>
+            <button id="save" button-id="{{this.id}}">Save</button>
+        </div> --}}
+        <div class="card" id="scraped-article-{{this.id}}">
+            <div class="headline-container">
+                <a class="headline" href="{{this.url}}" id="url-{{this.id}}" target="_blank">{{this.headline}}</a>
+                <button id="save" button-id="{{this.id}}">Save</button>
+            </div>
+            <p class="summary" id="summary-{{this.id}}">{{this.summary}}</p>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
