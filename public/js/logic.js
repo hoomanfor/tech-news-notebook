@@ -6,11 +6,10 @@ function classToggle() {
 
 function getNotes(id) {
     $.getJSON("/articles/" + id, response => {
-        console.log("getJSON", response.note);
         $("#view-notes-" + id).html("");
         response.note.forEach(function(element) {
             const li = $("<li>");
-            li.html(element.content + "<span class='moment'>" + moment(element.created).format("h:mmA MM/DD/YYYY") + "</span>");
+            li.html(element.content + "<span class='moment'>" + moment(element.created).format("h:mmA MM/DD/YYYY") + "</span>" + "<i article-id='" + id + "' note-id='" + element._id + "' class='far fa-trash-alt'></i>");
             $("#view-notes-" + id).append(li)
         })
     })
@@ -50,7 +49,6 @@ $(document).on("click", "#view-notes", function (event) {
 
 $(document).on("click", "#delete-article", function (event) {
     const id = $(this).attr("button-id");
-    console.log("This works", id);
     $.ajax({
         method: "DELETE",
         url: "/articles/" + id
@@ -64,7 +62,6 @@ $(document).on("click", "button[type='submit']", function (event) {
     event.preventDefault();
     const id = $(this).attr("button-id");
     const content = $("#input-" + id).val().trim();
-    console.log("prior to post", content);
     $.ajax({
         method: "POST",
         url: "/articles/" + id,
@@ -76,4 +73,16 @@ $(document).on("click", "button[type='submit']", function (event) {
         getNotes(id);
     })
     $("#input-" + id).val("");
+})
+
+$(document).on("click", ".fa-trash-alt", function (event) {
+    const noteId = $(this).attr("note-id");
+    const articleId = $(this).attr("article-id");
+    $.ajax({
+        method: "DELETE",
+        url: "/articles/notes/" + noteId
+    }).then(response => {
+        console.log(response)
+        getNotes(articleId)
+    })
 })
