@@ -86,3 +86,7 @@ $(document).on("click", ".fa-trash-alt", function (event) {
         getNotes(articleId)
     })
 })
+
+$(document).on("click", "#find", function (event) {
+    $("#spinner").html("<i class='fas fa-spinner'></i><h3>BBC.com Scrape In Progress</h3>");
+})
